@@ -1,0 +1,134 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    background-color: #071398;
+    
+}
+
+section {
+    text-align: center;
+}
+
+ul {
+    list-style-type: square;
+}
+
+input {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #FFD700;
+    color: #071398;
+
+}
+
+.gray {
+
+    color: #FFD700;
+
+}
+
+.button {
+
+    border-radius: 5px;
+    width: 250px;
+    height: 60px;
+    font-size: large;
+
+}
+
+.button:hover{
+
+    background-color: #000000;
+    color: #68dc54;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.logo {
+
+    border-radius: 50%;
+
+}
+
+div {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    margin-left: 37.5%;
+
+}
+
+.select {
+
+    background-color: #FFD700;
+    color: #071398;
+    width: 220px;
+    height: 40px;
+    border-radius: 8px;
+    appearance: none;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+
+}
+
+.select:hover {
+
+    background-color: #000000;
+    color: #68dc54;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+        
+.check {
+
+    transform: scale(1.3);
+    margin-right: 8px;
+
+}
+
+.check:checked {
+
+    accent-color: #FFD700
+
+}
+
+.fila {
+    display: inline-block;
+    align-items: center;
+    gap: 2rem; /* Distància entre cada grup label + select */
+    flex-wrap: wrap; /* Per adaptar a pantalles petites */
+    margin-bottom: 1rem;
+    margin-left: 37.5%;
+    
+}
+
+.camp {
+    display: inline;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.camp label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.camp select {
+    padding: 0.4rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.intro{
+
+    width: 50%;
+    margin-left: 25%;
+
+}

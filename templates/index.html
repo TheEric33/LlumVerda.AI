@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>LlumVerda.AI</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" type="image/png" href="../static/icon/icon.png">
+</head>
+<body>
+    <div>
+        <img class="logo" src="../static/icon/icon.png" width="60px" draggable="false">
+        <h1>LlumVerda.AI</h1>
+    </div>
+    <div class="intro">
+       <h3>Si no saps quina pel·licula mirar, LlumVerda.AI és la solució. Indica les teves preferències mitjançant els desplegables i 
+        toca al botó "Recomana!". L'aplicació filtrara segons els teus gustos i et donarà informació de cada film.</h3> 
+    </div>
+    
+    
+    <section class="fila">
+       <form method="post">
+        <div class="camp">
+            <label for="genere" >Gènere:</label>
+            <select name="genere" id="genere" class="select">
+                {% for nom in preferencies.genres %}
+                <option value="{{ nom }}">{{ nom }}</option>
+                {% endfor %}
+            </select> 
+        </div><br>
+        
+        <div class="camp">
+            <label for="duracio">Duració:</label>
+            <select name="duracio" id="duracio" class="select">
+                <option value="curta">Curta (&lt; 90 min)</option>
+                <option value="llarga">Llarga (&ge; 90 min)</option>
+            </select>
+        </div><br>
+        
+        <div class="camp">
+            <label for="idioma">Idioma:</label>
+            <select name="idioma" id="idioma" class="select">
+                {% for codi, nom in preferencies.idiomes.items() %}
+                <option value="{{ codi }}">{{ nom }}</option>
+                {% endfor %}
+            </select>
+        </div><br>
+        
+
+        <div class="camp">
+            <label for="any">Any:</label>
+            <select name="any" id="any" class="select">
+                <option value="qualssevol">Qualsevol</option>
+                <option value="abans">Abans del 2010</option>
+                <option value="despres">Després del 2010</option>
+            </select>
+        </div><br>
+        
+        <div class="camp">
+            <label for="plataforma">Plataforma:</label>
+            <select name="plataforma" id="plataforma" class="select">
+                <option value="qualsevol">Qualsevol</option>
+                    {% for nom in preferencies.plataformes %}
+                <option value="{{ nom }}">{{ nom }}</option>
+                    {% endfor %}
+            </select><br><br>
+        </div>
+        
+
+        <input type="submit" value="Recomana!" class="button"> 
+    </section>
+    
+
+        {% if resultats %}
+            <h2>🎞️ Resultats:</h2>
+            <ul>
+                {% for peli in resultats %}
+                    <li>
+                        <strong class="gray"><h3>{{ peli.title }}</strong> ({{ peli.release_date }})</h3>
+                        <strong class="gray">Director:</strong> {{ peli.director or "Desconegut" }}<br>
+                        <strong class="gray">Repartiment:</strong> {{ peli.cast | join(", ") }}<br>
+                        <strong class="gray">Valoració mitjana:</strong> {{ peli.vote_average }} <br>
+                        <strong class="gray">Sinopsis:</strong> {{ peli.overview }} <br>
+                        <label>
+                            <input type="checkbox" class="check" name="vistes" value="{{ peli.id }}"
+                                {% if peli.id in vistes %}checked{% endif %}>
+                            Ja vista
+                        </label>
+                    </li>
+                    <hr>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </form>
+</body>
+</html>
