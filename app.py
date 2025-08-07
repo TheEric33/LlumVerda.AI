@@ -2,12 +2,12 @@ from flask import Flask, request, render_template
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModel
 import requests
 import torch
-import webbrowser
-import threading
 import secrets
 import os
 import json
 from dotenv import load_dotenv
+
+
 
 VISTES_PATH = "vistes.json"
 
