@@ -22,7 +22,7 @@ def desar_vistes(vistes):
         json.dump(vistes, f)
 
 # Ruta local del model descarregat prèviament
-model_path = "./models"
+model_path = "TheEric33/llumverda-model"
 classifier = None  # Variable global que contindrà el pipeline
 
 # Inicialitza Flask
@@ -221,13 +221,12 @@ def index():
 
     return render_template("index.html", resultats=recomanacions, preferencies=preferencies, vistes=vistes)
 
-
+carrega_model()
 
 # ▶️ Inici de l'aplicació
 if __name__ == "__main__":
-    carrega_model()
-    threading.Timer(1.0, lambda: webbrowser.open("http://localhost:5000")).start()
-    app.run(debug=False)
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
 
 
