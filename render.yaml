@@ -1,6 +1,8 @@
 build:
   commands:
     - pip install --upgrade pip setuptools wheel
-    - pip install torch==2.8.0
+    - pip install torch==2.8.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
     - pip install transformers==4.40.1
     - pip install -r requirements.txt 
+
+start: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8
