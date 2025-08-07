@@ -6,3 +6,5 @@ build:
     - .venv/bin/pip install -r requirements.txt
     - .venv/bin/pip install gunicorn
     - .venv/bin/python -c "import torch; print('Torch OK:', torch.__version__)"
+
+start: .venv/bin/gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8
