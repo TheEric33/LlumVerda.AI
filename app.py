@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification
+from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModel
 import requests
 import torch
 import webbrowser
