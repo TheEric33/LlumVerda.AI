@@ -2,6 +2,9 @@ build:
   commands:
     - python3 -m venv .venv
     - .venv/bin/pip install --upgrade pip setuptools wheel
-    - .venv/bin/pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+    # Instal·lem PyTorch explícitament (CPU only, canvia l'URL si tens GPU)
+    - .venv/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
     - .venv/bin/pip install -r requirements.txt
+    - .venv/bin/pip install gunicorn
+
 start: .venv/bin/gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8
