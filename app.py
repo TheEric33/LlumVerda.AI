@@ -3,6 +3,8 @@ from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassifica
 import requests
 import torch
 import secrets
+import threading
+import webbrowser
 import os
 import json
 from dotenv import load_dotenv
@@ -225,7 +227,7 @@ carrega_model()
 
 # ▶️ Inici de l'aplicació
 if __name__ == "__main__":
-    
+    threading.Timer(1.0, lambda: webbrowser.open("http://localhost:5000")).start()
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
 
